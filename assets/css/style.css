@@ -1,0 +1,19 @@
+/* Fonts */
+
+/* Common */
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+body {
+  color: #2D2D32
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hero */
