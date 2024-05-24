@@ -211,4 +211,67 @@ a {
   opacity: 0.6;
 }
 
+#logo-container {
+  float: left;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+}
 
+#logo-container img {
+  position: relative;
+  width: 30px;
+  height: auto;
+  vertical-align: middle;
+}
+
+.navigation-menu-btn {
+  width: 28px;
+  height: 50px;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  margin-top: 30px;
+}
+
+.navigation-menu-btn span {
+  width: 100%;
+  float: left;
+  margin-bottom: 6px;
+  height: 2px;
+  background: #fff;
+  position: relative;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  background: #FF7F7F;
+}
+
+.navigation-menu-btn .second-bar {
+  width: 70%;
+}
+
+.navigation-menu-btn .third-bar {
+  width: 0;
+}
+
+.menu-btn-text {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: -1px;
+  color: rgba(255, 255, 255, 0.41);
+  font-size: 10px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.4s ease-in-out;
+}
+
+.navigation-menu-btn:hover .menu-btn-text {
+  color: #fff;
+}
+
+.navigation-menu-btn:hover .second-bar,
+.navigation-menu-btn:hover .third-bar {
+  width: 100%;
+}
