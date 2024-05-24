@@ -192,6 +192,63 @@ ul {
   margin-top: 50px;
 }
 
+.hero-location {
+  position: absolute;
+  z-index: 20;
+  left: 40%;
+  top: 40px;
+  padding-left: 80px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.hero-location::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  width: 20px;
+  height: 1px;
+  background: #FF7F7F;
+}
+
+.hero-location span {
+  float: left;
+  margin-right: 60px;
+  position: relative;
+  top: 0;
+}
+
+.hero-location span,
+.hover-location {
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+  color: rgba(255, 255, 255, 0.51);
+  letter-spacing: 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.hero-location:hover span {
+  top: 50px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hover-location {
+  position: absolute;
+  left: 80px;
+  top: -40px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hero-location:hover .hover-location {
+  top: 0;
+  opacity: 1;
+  visibility: visible;
+}
+
 /* Navigation - Sidebar */
 
 #sidebar {
