@@ -298,8 +298,6 @@ ul {
 #logo-container:hover .logo {
   background: #FF7F7F;
   transition: all 0.35s ease;
-  -webkit-clip-path: polygon(10% 100%, 50% 20%, 75% 65%, 60% 65%, 50% 50%, 25% 100%, 75% 100%, 65% 80%, 80% 80%, 90% 100%);
-  clip-path: polygon(10% 100%, 50% 20%, 75% 65%, 60% 65%, 50% 50%, 25% 100%, 75% 100%, 65% 80%, 80% 80%, 90% 100%);
 }
 
 .navigation-menu-btn {
