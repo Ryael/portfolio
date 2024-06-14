@@ -328,8 +328,30 @@ ul {
   width: 70%;
 }
 
-.navigation-menu-btn .third-bar {
+.navigation-menu-btn .third-bar,
+.navigation-menu-btn.closed-menu:hover .third-bar {
   width: 0;
+}
+
+.navigation-menu-btn.closed-menu .first-bar {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  margin-bottom: 0;
+  top: 8.5px;
+}
+
+.navigation-menu-btn.closed-menu .second-bar {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin-bottom: 0;
+  top: 6px;
+  width: 100%;
 }
 
 .menu-btn-text {
@@ -396,4 +418,92 @@ ul {
   border-radius: 100%;
   color: #fff;
   transition: all 0.4s ease-in-out;
+}
+
+#navigation-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 98;
+  width: 100%;
+  background: rgba(37, 36, 37, 0.71);
+  cursor: none;
+  display: none;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+#navigation-container {
+  position: fixed;
+  top: 0;
+  left: -1064px;
+  bottom: 0;
+  z-index: 99;
+  width: 600px;
+  background: #252425;
+  overflow: auto;
+  padding: 35px 30px 35px 160px;
+  opacity: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+  touch-action: none;
+  overflow: hidden !important;
+}
+
+#navigation-container::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 60%;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.031);
+  z-index: -1;
+}
+
+.navigation-title {
+  position: absolute;
+  bottom: 0;
+  left: 120px;
+  z-index: 2;
+  right: 0;
+}
+
+.navigation-title span {
+  float: left;
+  position: relative;
+  opacity: 0.2;
+  top: 150px;
+  min-height: 200px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 94px;
+  color: #fff;
+  letter-spacing: 4px;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -webkit-transform-origin: left top;
+  -ms-transform-origin: left top;
+  -moz-transform-origin: left top;
+  -o-transform-origin: left top;
+  transform-origin: left top;
+}
+
+.navigation-inner {
+  float: left;
+  width: 350px;
+  position: relative;
+  z-index: 10;
+  top: 180px;
+}
+
+nav .navigation-inner {
+  float: left;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  background: #252425;
+  z-index: 20;
 }
