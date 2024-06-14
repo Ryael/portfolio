@@ -1,3 +1,11 @@
+/* Global Variables */
+
+var menuButton = $(".navigation-menu-btn"),
+  navigationContainer = $("#navigation-container"),
+  navigationOverlay = $("#navigation-overlay");
+
+/* Hero Dot Animation */
+
 function initPortfolio() {
   //  Clone Hero Dots.
   $.fn.duplicate = function (a, b) {
@@ -33,6 +41,8 @@ function initPortfolio() {
 }
 
 initPortfolio()
+
+/* Dynamically Typing Text */
 
 ! function($) {
 
@@ -417,4 +427,60 @@ function handleTyping () {
     showCursor: true,
     cursorChar: "|"
   });
+}
+
+/* Navigation Menu */
+
+function showMenu() {
+    navigationOverlay.fadeIn(500);
+    navigationContainer.animate({
+        left: "0",
+        opacity: 1
+    }, {
+        queue: false,
+        duration: 600,
+        easing: "easeInOutExpo"
+    });
+    menuButton.removeClass("open-menu").addClass("closed-menu");
+    setTimeout(function () {
+        $(".nav-title span").shuffleLetters({});
+    }, 300);
+}
+
+function hideMenu() {
+  navigationContainer.animate({
+    left: "-1064px",
+    opacity: 0
+  }, {
+    queue: false,
+    duration: 600,
+    easing: "easeInOutExpo"
+  });
+  menuButton.addClass("open-menu").removeClass("closed-menu");
+  navigationOverlay.fadeOut(500);
+}
+
+menuButton.on("click", function () {
+  if (menuButton.hasClass("open-menu")) showMenu();
+  else hideMenu();
+  return false;
+});
+
+navigationOverlay.on("click", function () {
+  hideMenu();
+  return false;
+});
+
+$(".sliding-menu a ").mousemove(function (e) {
+  $(this).shuffleLetters({});
+});
+
+var tooltips = document.querySelectorAll('#navigation-overlay .tooltip');
+window.onmousemove = function (e) {
+  var x = (e.clientX + 20) + 'px',
+      y = (e.clientY + 20) + 'px';
+  for (var i = 0; i < tooltips.length; i++) {
+      tooltips[i].style.top = y;
+      tooltips[i].style.left = x;
+  }
 }
