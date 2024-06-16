@@ -455,17 +455,16 @@ ul {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 49%;
+  width: 46%;
   height: 100px;
   background: rgba(255, 255, 255, 0.031);
   z-index: -1;
 }
 
 .navigation-logo {
-  float: left;
   position: absolute;
   top: 110px;
-  left: 170px;
+  left: 167px;
 }
 
 .navigation-logo::before {
@@ -493,7 +492,6 @@ ul {
 
 #menu-panel {
   margin: 0;
-  float: left;
   width: 100%;
   overflow: hidden;
 }
@@ -501,12 +499,11 @@ ul {
 #menu-panel li {
   margin: 0;
   position: relative;
-  float: left;
   width: 100%;
 }
 
 .menu-link {
-  float: left;
+  display: flex;
   width: 100%;
   padding: 0 10px;
   height: 40px;
@@ -545,13 +542,13 @@ ul {
 .navigation-title {
   position: absolute;
   bottom: 0;
-  left: 120px;
+  left: 125px;
   z-index: 2;
   right: 0;
 }
 
 .navigation-title span {
-  float: left;
+  display: flex;
   position: relative;
   opacity: 0.2;
   top: 150px;
@@ -574,7 +571,6 @@ ul {
 }
 
 .navigation-inner {
-  float: left;
   width: 350px;
   position: relative;
   z-index: 10;
@@ -582,7 +578,6 @@ ul {
 }
 
 nav .navigation-inner {
-  float: left;
   overflow: hidden;
   width: 100%;
   position: relative;
