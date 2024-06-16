@@ -584,3 +584,23 @@ nav .navigation-inner {
   background: #252425;
   z-index: 20;
 }
+
+#navigation-overlay .tooltip {
+  width: 150px;
+  height: 50px;
+  line-height: 50px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  z-index: 100;
+  font-size: 10px;
+  display: none;
+}
+
+#navigation-overlay:hover .tooltip {
+  display: block;
+  position: fixed;
+  overflow: hidden;
+  background: #FF7F7F;
+}
