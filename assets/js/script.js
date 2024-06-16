@@ -471,10 +471,6 @@ navigationOverlay.on("click", function () {
   return false;
 });
 
-$(".sliding-menu a ").mousemove(function (e) {
-  $(this).shuffleLetters({});
-});
-
 var tooltips = document.querySelectorAll('#navigation-overlay .tooltip');
 window.onmousemove = function (e) {
   var x = (e.clientX + 20) + 'px',
