@@ -443,7 +443,7 @@ function showMenu() {
     });
     menuButton.removeClass("open-menu").addClass("closed-menu");
     setTimeout(function () {
-        $(".nav-title span").shuffleLetters({});
+        $(".navigation-title span").shuffleLetters({});
     }, 300);
 }
 
