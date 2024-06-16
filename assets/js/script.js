@@ -410,7 +410,6 @@ initPortfolio()
       resetCallback: function() {}
   };
 
-
 }(window.jQuery);
 
 $("document").ready(function() {
@@ -441,7 +440,7 @@ function showMenu() {
         duration: 600,
         easing: "easeInOutExpo"
     });
-    menuButton.removeClass("open-menu").addClass("closed-menu");
+    menuButton.addClass("closed-menu");
     setTimeout(function () {
         $(".navigation-title span").shuffleLetters({});
     }, 300);
@@ -456,12 +455,12 @@ function hideMenu() {
     duration: 600,
     easing: "easeInOutExpo"
   });
-  menuButton.addClass("open-menu").removeClass("closed-menu");
+  menuButton.removeClass("closed-menu");
   navigationOverlay.fadeOut(500);
 }
 
 menuButton.on("click", function () {
-  if (menuButton.hasClass("open-menu")) showMenu();
+  if (!menuButton.hasClass("closed-menu")) showMenu();
   else hideMenu();
   return false;
 });
