@@ -439,7 +439,7 @@ ul {
   left: -1064px;
   bottom: 0;
   z-index: 99;
-  width: 600px;
+  width: 610px;
   background: #252425;
   overflow: auto;
   padding: 35px 30px 35px 160px;
@@ -455,7 +455,7 @@ ul {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 46%;
+  width: 47.5%;
   height: 100px;
   background: rgba(255, 255, 255, 0.031);
   z-index: -1;
