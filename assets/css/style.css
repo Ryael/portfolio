@@ -603,7 +603,7 @@ nav .navigation-inner {
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 9999;
+  z-index: 10;
   align-items: self-end;
   justify-content: inherit;
   flex-direction: column;
