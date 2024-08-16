@@ -646,4 +646,54 @@ nav .navigation-inner {
   background: #FF7F7F;
 }
 
+/* Featured Projects */
 
+#featured-projects {
+  background: #2A2A2E;
+  position: relative;
+  width: 100%;
+  padding: 110px 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.slider-title-wrapper {
+  position: absolute;
+  left: 100px;
+  width: 50%;
+  top: 30%;
+}
+
+.slider-title {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  z-index: 11;
+  position: relative;
+}
+
+.slider-title h3 {
+  font-size: 40px;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.71);
+  position: relative;
+  text-align: left;
+  padding-bottom: 20px;
+}
+
+.slider-title p {
+  font-size: 11px;
+  line-height: 24px;
+  padding-bottom: 10px;
+  font-weight: 500;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.slider-title .btn {
+  margin-top: 50px;
+}
