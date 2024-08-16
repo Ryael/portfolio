@@ -37,13 +37,19 @@ ul {
   list-style: none;
 }
 
+.body-content {
+  position: relative;
+  padding-left: 80px;
+  z-index: 5;
+}
+
 /* Hero */
 
 #hero-section {
   display: grid;
   place-items: center;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
   position: relative;
   z-index: 4;
@@ -639,4 +645,5 @@ nav .navigation-inner {
   opacity: 1;
   background: #FF7F7F;
 }
+
 
