@@ -441,3 +441,102 @@ window.onmousemove = function (e) {
       tooltips[i].style.left = x;
   }
 }
+
+// $(document).ready(function(){
+//   $('.slick-slider').slick({
+//     dots: true,
+//     infinite: true,
+//     speed: 600,
+//     slidesToShow: 1,
+//     centerMode: true,
+//     arrows: true,
+//     variableWidth: true,
+//   });
+// });
+
+///
+
+    //   slick  ------------------
+    var previousArrow = $(".previous-arrow"),
+        nextArrow = $(".next-arrow"),
+        carouselContainer = $(".carousel-slider-container"),
+        sliderCounter = $(".slider-counter"),
+        sliderWrap = $(".slider-wrapper"),
+        featuredProjects = $('.slick-slider');
+
+    featuredProjects.slick({
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        dots: true,
+        arrows: false,
+        slickCurrentSlide: 2,
+        centerPadding: "0",
+        centerMode: true,
+        responsive: [{
+                breakpoint: 1224,
+                settings: {
+                    slidesToShow: 4,
+                    centerMode: false,
+                }
+            },
+
+            {
+                breakpoint: 1084,
+                settings: {
+                    slidesToShow: 2,
+                    centerMode: true,
+                }
+            },
+
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    centerMode: true,
+                }
+            }
+        ]
+
+    });
+
+    featuredProjects.on("afterChange", function (event, slick, currentSlide) {
+        sliderCounter.text(Number(slick.currentSlide + 1) + ' / ' + slick.slideCount);
+    });
+
+    previousArrow.on("click", function () {
+        $(this).closest(sliderWrap).find(carouselContainer).slick('slickPrev');
+    });
+    nextArrow.on("click", function () {
+        $(this).closest(sliderWrap).find(carouselContainer).slick('slickNext');
+    });
+  featuredProjects.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+    var
+      direction,
+      slideCountZeroBased = slick.slideCount - 1;
+
+    if (nextSlide == currentSlide) {
+      direction = "same";
+
+    } else if (Math.abs(nextSlide - currentSlide) == 1) {
+      direction = (nextSlide - currentSlide > 0) ? "right" : "left";
+
+    } else {
+      direction = (nextSlide - currentSlide > 0) ? "left" : "right";
+    }
+
+    // Add a temp CSS class for the slide animation (.slick-current-clone-animate)
+    if (direction == 'right') {
+      $('.slick-cloned[data-slick-index="' + (nextSlide + slideCountZeroBased + 1) + '"]', featuredProjects).addClass('slick-current-clone-animate');
+    }
+
+    if (direction == 'left') {
+      $('.slick-cloned[data-slick-index="' + (nextSlide - slideCountZeroBased - 1) + '"]', featuredProjects).addClass('slick-current-clone-animate');
+    }
+  });
+
+  featuredProjects.on('afterChange', function (event, slick, currentSlide, nextSlide) {
+    $('.slick-current-clone-animate', featuredProjects).removeClass('slick-current-clone-animate');
+    $('.slick-current-clone-animate', featuredProjects).removeClass('slick-current-clone-animate');
+  });
+
