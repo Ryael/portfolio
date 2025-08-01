@@ -27,7 +27,7 @@
   <body>
     <header>
       <div id="sidebar">
-        <a href="#" id="logo-link">
+        <a href="index.html" id="logo-link">
           <div id="logo-container">
             <div class="logo"></div>
           </div>
@@ -73,7 +73,7 @@
           <nav id="menu" class="navigation-inner ">
             <ul id="menu-panel">
               <li>
-                <a class="menu-link" href="#">Home</a>
+                <a class="menu-link" href="index.html">Home</a>
               </li>
               <li>
                 <a class="menu-link" href="#">Portfolio</a>
@@ -85,7 +85,7 @@
                 <a class="menu-link" href="#">About</a>
               </li>
               <li>
-                <a class="menu-link" href="#">Contact</a>
+                <a class="menu-link" href="contact.html">Contact</a>
               </li>
             </ul>
           </nav>
@@ -99,7 +99,7 @@
         <span>09.6999</span>
         <a class="hover-location" href="https://www.google.com.ua/maps/" target="_blank">Based in Ireland</a>
       </div>
-      <!--<div class="hero-pagination">
+      <div class="hero-pagination">
         <div class="pagination-wrapper">
           <div class="pagination-line active"></div>
         </div>
@@ -109,24 +109,85 @@
         <div class="pagination-wrapper">
           <div class="pagination-line"></div>
         </div>
-      </div> -->
+      </div>
       <section id="hero-section">
         <div id="hero-container">
           <div class="hero-logo"></div>
           <div class="hero-title">
-            <h1>
-              Hey there!
-              <br>
-              I'm Andrey Belyakov, &nbsp;&nbsp;&nbsp;
-              <br>
-              a <span class="element"></span>
-            </h1>
-            <h4>Currently a Work in Progress!</h4>
+            <h1 class="reveal-text">Hey there!</h1>
+            <h1 class="reveal-text">I'm Andrey Belyakov, &nbsp;&nbsp;&nbsp;</span>
+            <h1 class="reveal-text">a <span class="element highlight"></span></h1>
+            <h4 class="reveal-text">Currently a Work in Progress!</h4>
             <!-- <h4>I create Web and Graphic Designs</h4> -->
-            <a class="btn colour-btn">Let's Start</a>
+            <a class="btn colour-btn reveal-text">Let's Start</a>
           </div>
         </div>
       </section>
+      <section id="about-section" class="flex">
+        <div class="container flex">
+          <h4 class="section-number">
+            01.
+          </h4>
+          <div class="two-column-grid">
+            <div class="column">
+              <div class="three-column-grid">
+                <div class="column">
+                  <div class="tech-stack-item flex">
+                    <img class="tech-stack-img" src="assets/img/stack/html.png"/>
+                    <p class="tech-stack-caption"> HTML </p>
+                  </div>
+                  <div class="tech-stack-item flex">
+                    <img class="tech-stack-img" src="assets/img/stack/python.png"/>
+                    <p class="tech-stack-caption"> Python </p>
+                  </div>
+                  <div class="tech-stack-item flex">
+                    <img class="tech-stack-img" src="assets/img/stack/aws.png"/>
+                    <p class="tech-stack-caption"> AWS </p>
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="tech-stack-item flex">
+                    <img class="tech-stack-img" src="assets/img/stack/css.png"/>
+                    <p class="tech-stack-caption"> CSS </p>
+                  </div>
+                  <div class="tech-stack-item flex">
+                    <img class="tech-stack-img" src="assets/img/stack/ruby.png"/>
+                    <p class="tech-stack-caption"> Ruby </p>
+                  </div>
+                  <div class="tech-stack-item flex">
+                    <img class="tech-stack-img" src="assets/img/stack/heroku.png"/>
+                    <p class="tech-stack-caption"> Heroku </p>
+                  </div>
+                  <div class="tech-stack-item flex">
+                    <img class="tech-stack-img" src="assets/img/stack/git.png"/>
+                    <p class="tech-stack-caption"> Git </p>
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="tech-stack-item flex">
+                    <img class="tech-stack-img" src="assets/img/stack/js.png"/>
+                    <p class="tech-stack-caption"> JavaScript </p>
+                  </div>
+                  <div class="tech-stack-item flex">
+                    <img class="tech-stack-img" src="assets/img/stack/django.png"/>
+                    <p class="tech-stack-caption"> Django </p>
+                  </div>
+                  <div class="tech-stack-item flex">
+                    <img class="tech-stack-img" src="assets/img/stack/postgresql.png"/>
+                    <p class="tech-stack-caption"> PostgreSQL </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <h3> About <span>Me</span> </h3>
+              <p> I'm a full stack developer with a deep passion for CSS, UX/UI, accessibility, and all things web development. With a background in science, a passion for good design, and an ever-growing interest in software development, I'm always looking to learn and better myself. The unique combination of creativity, logic, technology and never running out of new things to discover drives my excitement for web development. </p>
+              <p>  I have a particuilarly soft spot for design, and the space between development and design is where I thrive. In particular, I love bringing designs to life with code that's clean, easy to maintain, and fulfills the original vision. When I’m not at my computer I like to spend my time reading, keeping fit, and playing with my cat. </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="featured-projects">
         <div class="slider-title-wrapper">
           <div class="slider-title">
@@ -234,6 +295,8 @@
         </div>
         <div class="slider-counter">1 / 5</div>
       </section>
+
+      <!-- End Hero Section -->
       <section id="page-end">
         <div class="page-end-container">
           <div class="page-end-text">
@@ -244,11 +307,6 @@
           </div>
         </div>
       </section>
-      <!-- End Hero Section -->
-    </div>
-
-    <!-- Footer -->
-    <!-- End Footer -->
 
     <!-- jQuery -->
     <script
