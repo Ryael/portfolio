@@ -43,7 +43,6 @@ ul {
 
 .body-content {
   position: relative;
-  padding-left: 80px;
   z-index: 5;
 }
 
@@ -64,6 +63,7 @@ ul {
   z-index: 4;
   background: #2A2A2E;
   box-sizing: border-box;
+  padding-left: 80px;
 }
 
 .hero-title {
@@ -80,6 +80,8 @@ ul {
   width: 50px;
   height: 4px;
   border: 1px solid rgba(255, 255, 255, 0.21);
+  animation-name: fadeIn;
+  animation-duration: 1s;
 }
 
 .hero-title h1 {
@@ -125,6 +127,8 @@ ul {
   padding-left: 80px;
   cursor: pointer;
   overflow: hidden;
+  animation-name: fadeIn;
+  animation-duration: 1s;
 }
 
 .hero-location::before {
@@ -782,6 +786,8 @@ nav .navigation-inner {
   flex-wrap: wrap;
   margin-right: 2.2rem;
   left: 95.5%;
+  animation-name: fadeIn;
+  animation-duration: 1s;
 }
 
 .pagination-wrapper {
@@ -1133,8 +1139,7 @@ nav .navigation-inner {
 #page-end {
   position: relative;
   background: #2A2A2E;
-  width: 100%;
-  padding: 70px 0;
+  padding: 70px 0 70px 80px;
   overflow: hidden;
 }
 
@@ -1194,6 +1199,7 @@ nav .navigation-inner {
   z-index: 4;
   background: #2A2A2E;
   box-sizing: border-box;
+  padding-left: 80px;
 }
 
 .section-number {
@@ -1382,3 +1388,29 @@ nav .navigation-inner {
   }
 }
 
+#sidebar,
+#sidebar::before {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: fadeInLeft;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity:0;
+    left: -5%;
+  }
+  to {
+    opacity:1;
+    left: 0%;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity:0
+  }
+  to {
+    opacity:1
+  }
+}
