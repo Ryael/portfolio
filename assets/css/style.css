@@ -87,7 +87,7 @@ ul {
 .hero-title h1 {
   color: #fff;
   font-family: 'Poppins', sans-serif;
-  font-size: 50px;
+  font-size: clamp(1.63rem, 0.66rem + 3.43vw, 3.13rem);
   text-align: left;
   font-weight: 600;
   line-height: 70px;
@@ -1412,5 +1412,31 @@ nav .navigation-inner {
   }
   to {
     opacity:1
+  }
+}
+
+@media (max-width: 1075px) {
+
+  #hero-section,
+  #about-section {
+    padding-left: 40px;
+  }
+
+  .hero-title .btn {
+    margin-top: 0px;
+  }
+
+  .hero-title h1 {
+    line-height: 1.4;
+  }
+
+  #sidebar::before,
+  .navigation-socials,
+  .navigation-socials::before,
+  #logo-link,
+  .hero-pagination,
+  .hero-location,
+  .hero-title h4 {
+    display: none;
   }
 }
