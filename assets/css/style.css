@@ -760,7 +760,7 @@ nav .navigation-inner {
       0% 0%);
 }
 
-#navigation-credits {
+.navigation-credits {
   position: absolute;
   right: 0;
   bottom: -37px;
@@ -771,6 +771,10 @@ nav .navigation-inner {
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 2px;
+}
+
+.navigation-credits:last-of-type {
+  display: none;
 }
 
 .hero-pagination {
@@ -1442,6 +1446,28 @@ nav .navigation-inner {
   .hero-location,
   .hero-title h4 {
     display: none;
+  }
+}
+
+@media (max-width: 610px) {
+  #navigation-container {
+    width: 100vw;
+    padding: 35px 30px 35px 76px;
+  }
+  .navigation-logo {
+    left: 85px;
+  }
+  .navigation-title span {
+    top: 150px;
+    left: -97px;
+    font-size: 60px;
+  }
+  .navigation-credits:first-of-type {
+    display: none;
+  }
+  .navigation-credits:last-of-type {
+    display: block;
+    right: 11px;
   }
 }
 
