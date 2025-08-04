@@ -87,7 +87,7 @@ ul {
 .hero-title h1 {
   color: #fff;
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(1.63rem, 0.66rem + 3.43vw, 3.13rem);
+  font-size: clamp(1.25rem, 0.65rem + 3.45vw, 3.13rem);
   text-align: left;
   font-weight: 600;
   line-height: 70px;
@@ -1419,7 +1419,11 @@ nav .navigation-inner {
 
   #hero-section,
   #about-section {
-    padding-left: 40px;
+    padding-left: 0px;
+  }
+
+  #hero-container {
+    margin-right: 0;
   }
 
   .hero-title .btn {
@@ -1438,5 +1442,19 @@ nav .navigation-inner {
   .hero-location,
   .hero-title h4 {
     display: none;
+  }
+}
+
+@media (max-width: 450px) {
+  #hero-container .hero-logo {
+    left: 78.5%;
+  }
+}
+
+@media (max-width: 300px) {
+  #hero-container .hero-logo {
+    left: 78.5%;
+    height: 400px;
+    width: 300px;
   }
 }
