@@ -1449,11 +1449,17 @@ nav .navigation-inner {
   #sidebar::before,
   .navigation-socials,
   .navigation-socials::before,
-  #logo-link,
   .hero-pagination,
   .hero-location,
   .hero-title h4 {
     display: none;
+  }
+
+  #sidebar {
+    flex-direction: row;
+    width: 100vw;
+    height: 80px;
+    justify-content: space-between;
   }
 }
 
