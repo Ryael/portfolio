@@ -562,7 +562,7 @@ ul {
 }
 
 #navigation-container::after {
-  content: '';
+  content: '© Ryael 2025';
   position: absolute;
   right: 0;
   bottom: 0;
@@ -570,6 +570,14 @@ ul {
   height: 100px;
   background: rgba(255, 255, 255, 0.031);
   z-index: -1;
+  line-height: 70px;
+  color: rgba(255,255,255,0.7);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .navigation-logo {
@@ -1474,6 +1482,18 @@ nav .navigation-inner {
 @media (max-width: 450px) {
   #hero-container .hero-logo {
     left: 78.5%;
+  }
+}
+
+@media (max-width: 320px) {
+  #navigation-container::after {
+    content: '© Ryael';
+  }
+  #navigation-container {
+    padding: 35px 30px 35px 50px;
+  }
+  .navigation-logo {
+    left: 56px;
   }
 }
 
