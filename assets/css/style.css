@@ -987,7 +987,7 @@ nav .navigation-inner {
 #page-end {
   position: relative;
   background: #2A2A2E;
-  padding: 70px 0px;
+  padding: 58px 0px;
 }
 
 .page-end-container {
@@ -1178,7 +1178,7 @@ nav .navigation-inner {
   transition: all 0.2s ease-in-out;
 }
 
-.testi-number {
+.slide-number {
   position: absolute;
   right: 0;
   top: 0;
@@ -1194,6 +1194,37 @@ nav .navigation-inner {
   border-radius: 0px 20px 0px 20px;
 }
 
+.slide-description {
+  position: absolute;
+  bottom: 29px;
+  left: 59px;
+  text-align: left;
+  color: #fff;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-family: 'Poppins',sans-serif;
+  letter-spacing: 4px;
+  padding-left: 35px;
+  transition: all 200ms linear;
+}
+
+#featured-projects .slide-description::before {
+  top: -15px;
+  width: 20px;
+  height: 2px;
+  margin-top: 25px;
+  left: 0;
+  transition: all 200ms linear;
+}
+
+#featured-projects .slide-description:hover {
+  padding-left: 50px;
+}
+
+#featured-projects .slide-description:hover::before {
+  width: 35px;
+}
 
 /* 08. About */
 
