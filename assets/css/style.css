@@ -52,6 +52,7 @@ ul {
 
 .container {
   position: relative;
+  padding: 0 clamp(1.5rem, 6%, 4rem);
 }
 
 .body-content {
@@ -383,7 +384,7 @@ ul {
 }
 
 .pagination-line {
-  width: 75%;
+  width: 70%;
   height: 100%;
   max-height: 2px;
   border-radius: 99px;
@@ -996,7 +997,7 @@ nav .navigation-inner {
   position: relative;
   z-index: 5;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr auto;
 }
 
 .page-end-container h6 {
@@ -1040,12 +1041,16 @@ nav .navigation-inner {
 
 /* 07.1 Slider */
 
+.embla-container {
+  padding: 0 clamp(1.5rem, 6%, 4rem);
+}
+
 .embla {
   max-width: 68rem;
   margin: auto;
-  --slide-height: 25rem;
+  --slide-height: clamp(21rem, 18.8313rem + 9.6386vw, 25rem);
   --slide-spacing: 1rem;
-  --slide-size: 48%;
+  --slide-size: clamp(20rem, 11.8675rem + 36.1446vw, 35rem);
   --detail-medium-contrast: rgb(25, 25, 25);
   --text-high-contrast-rgb-value: 230, 230, 230;
   --detail-high-contrast: rgb(101, 101, 101);
@@ -1231,7 +1236,6 @@ nav .navigation-inner {
 #about-section {
   width: 100%;
   height: 100vh;
-  overflow: hidden;
   position: relative;
   z-index: 4;
   background: #2A2A2E;
@@ -1243,7 +1247,7 @@ nav .navigation-inner {
 .slider-title h3 {
   color: #fff;
   font-family: 'Poppins', sans-serif;
-  font-size: 40px;
+  font-size: clamp(1.25rem, 0.65rem + 3.45vw, 2.5rem); /* font-size: 40px */
   text-align: left;
   padding-bottom: 25px;
 }
@@ -1289,6 +1293,10 @@ nav .navigation-inner {
   grid-gap: 25px;
 }
 
+.three-column-grid .column {
+  align-items: center;
+}
+
 .column {
   display: flex;
   justify-content: center;
@@ -1316,8 +1324,8 @@ nav .navigation-inner {
   position: relative;
   align-items: center;
   justify-content: space-evenly;
-  height: 100px;
-  width: 160px;
+  height: clamp(3.75rem, 2.84rem + 3.64vw, 6.25rem);
+  width: clamp(5rem, 2.95rem + 9.09vw, 10rem);
   border: double 3px transparent;
     border-top-width: 3px;
     border-right-width: 3px;
@@ -1338,11 +1346,11 @@ nav .navigation-inner {
 }
 
 .tech-stack-img {
-  height: 55px;
+  height: clamp(2.19rem, 1.73rem + 1.82vw, 3.44rem);
 }
 
 #about-section .two-column-grid .tech-stack-caption {
-  font-size: 1rem;
+  font-size: clamp(0.8rem, 0.44rem + 1.6vw, 1rem);
   font-weight: 600;
   line-height: 1;
   letter-spacing: 1px;
@@ -1351,10 +1359,30 @@ nav .navigation-inner {
 
 /* 09. Media Queries */
 
+@media (max-width: 1294px) {
+  .two-column-grid {
+    grid-template-columns: 1fr;
+    grid-gap: 35px;
+  }
+
+  .two-column-grid > .column:last-child {
+    order: -1;
+  }
+
+  #about-section h3::before {
+    top: 48px;
+  }
+
+  #about-section {
+    height: auto;
+  }
+}
+
 @media (max-width: 1075px) {
 
   #hero-section,
-  #about-section {
+  #about-section,
+  #featured-projects {
     padding-left: 0px;
   }
 
@@ -1394,25 +1422,62 @@ nav .navigation-inner {
   }
 }
 
+@media (max-width: 730px) {
+  .slider-title {
+    grid-template-columns: 1fr;
+  }
+
+  .slider-btn {
+  align-items: start;
+  }
+
+  #featured-projects .slider-text h3::before {
+  top: 30px;
+  }
+
+  .page-end-container {
+    grid-template-columns: 1fr;
+  }
+
+  .page-end-btn {
+    display: flex;
+    margin-top: 48px;
+  }
+}
+
 @media (max-width: 610px) {
   #navigation-container {
     width: 100vw;
     padding: 35px 30px 35px 76px;
   }
+
   .navigation-logo {
     left: 85px;
   }
+
   .navigation-title span {
     top: 150px;
     left: -97px;
     font-size: 60px;
   }
+
   .navigation-credits:first-of-type {
     display: none;
   }
+
   .navigation-credits:last-of-type {
     display: block;
     right: 11px;
+  }
+
+  .slide-number {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  }
+
+  .slide-description {
+  bottom: 22px;
   }
 }
 
@@ -1420,15 +1485,31 @@ nav .navigation-inner {
   #hero-container .hero-logo {
     left: 78.5%;
   }
+
+  #page-end {
+    display: none;
+  }
+}
+
+@media (max-width: 390px) {
+  .embla__dot::after {
+    margin: 10px;
+  }
+
+  .embla__dot {
+    width: auto;
+  }
 }
 
 @media (max-width: 320px) {
   #navigation-container::after {
     content: '© Ryael';
   }
+
   #navigation-container {
     padding: 35px 30px 35px 50px;
   }
+
   .navigation-logo {
     left: 56px;
   }
