@@ -614,3 +614,33 @@ emblaApi
   .on('destroy', removeTweenOpacity)
   .on('destroy', removePrevNextBtnsClickHandlers)
   .on('destroy', removeDotBtnsAndClickHandlers)
+
+new fullpage('#fullpage', {
+  autoScrolling: true,
+  navigation: false, // disable default bullets.
+  credits: {
+    enabled: false,
+  },
+
+    // Get your license at https://alvarotrigo.com/fullPage/pricing.
+  licenseKey: "CNX97-NSKS7-5I9F7-23P18-FKXNN",
+
+  onLeave: function(origin, destination) {
+    updateNav(destination.index);
+  }
+
+});
+
+// Highlight active item.
+function updateNav(activeIndex) {
+  document.querySelectorAll('#pagination .pagination-wrapper').forEach((el, i) => {
+    el.classList.toggle('active', i === activeIndex);
+  });
+}
+
+// Click → scroll to section.
+document.querySelectorAll('#pagination .pagination-wrapper').forEach(el => {
+  el.addEventListener('click', () => {
+    fullpage_api.moveTo(parseInt(el.dataset.index) + 1);
+  });
+});
