@@ -398,7 +398,7 @@ ul {
 }
 
 .pagination-wrapper:hover .stepper-item {
-  width: 100%;
+ width: 100%;
 }
 
 /* 05. Buttons */
@@ -1411,7 +1411,7 @@ nav .navigation-inner {
 
   #sidebar {
     flex-direction: row;
-    width: 100vw;
+    width: 100%;
     height: 80px;
     justify-content: space-between;
   }
