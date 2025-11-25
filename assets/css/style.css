@@ -182,7 +182,7 @@ ul {
 
 /* 04. Hero */
 
-#hero-section {
+.hero-section {
   display: grid;
   place-items: center;
   width: 100%;
@@ -354,21 +354,20 @@ ul {
       0% 0%);
 }
 
-.hero-pagination {
+#pagination {
   display: flex;
-  width: 36px;
+  width: 28px;
+  height: 80px;
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 10;
-  align-items: self-end;
+  align-items: flex-start;
   justify-content: inherit;
   flex-direction: column;
   flex-wrap: wrap;
-  margin-right: 2.2rem;
-  left: 95.5%;
   animation-name: fadeIn;
   animation-duration: 1s;
+  z-index: 101;
 }
 
 .pagination-wrapper {
@@ -380,10 +379,9 @@ ul {
   align-content: center;
   cursor: pointer;
   align-items: center;
-  justify-content: end;
 }
 
-.pagination-line {
+.stepper-item {
   width: 70%;
   height: 100%;
   max-height: 2px;
@@ -393,10 +391,14 @@ ul {
   transition: width .2s ease-in-out;
 }
 
-.pagination-line.active {
+.pagination-wrapper.active .stepper-item {
   width: 100%;
   opacity: 1;
   background: #FF7F7F;
+}
+
+.pagination-wrapper:hover .stepper-item {
+  width: 100%;
 }
 
 /* 05. Buttons */
@@ -961,7 +963,7 @@ nav .navigation-inner {
 
 /* 07. Featured Projects */
 
-#featured-projects {
+.featured-projects {
   padding: 50px 0 50px 80px;
   background: #2A2A2E;
   flex-direction: column;
@@ -1214,7 +1216,7 @@ nav .navigation-inner {
   transition: all 200ms linear;
 }
 
-#featured-projects .slide-description::before {
+.featured-projects .slide-description::before {
   top: -15px;
   width: 20px;
   height: 2px;
@@ -1223,17 +1225,17 @@ nav .navigation-inner {
   transition: all 200ms linear;
 }
 
-#featured-projects .slide-description:hover {
+.featured-projects .slide-description:hover {
   padding-left: 50px;
 }
 
-#featured-projects .slide-description:hover::before {
+.featured-projects .slide-description:hover::before {
   width: 35px;
 }
 
 /* 08. About */
 
-#about-section {
+.about-section {
   width: 100%;
   height: 100vh;
   position: relative;
@@ -1243,7 +1245,7 @@ nav .navigation-inner {
   padding-left: 80px;
 }
 
-#about-section h3,
+.about-section h3,
 .slider-title h3 {
   color: #fff;
   font-family: 'Poppins', sans-serif;
@@ -1252,7 +1254,7 @@ nav .navigation-inner {
   padding-bottom: 25px;
 }
 
-#about-section p {
+.about-section p {
   color: #fff;
   padding-top: 10px;
   text-align: left;
@@ -1266,8 +1268,8 @@ nav .navigation-inner {
   max-width: 515px;
 }
 
-#about-section h3::before,
-#featured-projects h3::before {
+.about-section h3::before,
+.featured-projects h3::before {
   background: #FF7F7F;
   content: '';
   position: absolute;
@@ -1277,7 +1279,7 @@ nav .navigation-inner {
   margin-top: 25px;
 }
 
-#featured-projects .slider-text h3::before {
+.featured-projects .slider-text h3::before {
   top: 48px;
 }
 
@@ -1303,7 +1305,7 @@ nav .navigation-inner {
   flex-direction: column;
 }
 
-#about-section .two-column-grid p,
+.about-section .two-column-grid p,
 .slider-title p {
   color: #fff;
   text-align: left;
@@ -1349,7 +1351,7 @@ nav .navigation-inner {
   height: clamp(2.19rem, 1.73rem + 1.82vw, 3.44rem);
 }
 
-#about-section .two-column-grid .tech-stack-caption {
+.about-section .two-column-grid .tech-stack-caption {
   font-size: clamp(0.8rem, 0.44rem + 1.6vw, 1rem);
   font-weight: 600;
   line-height: 1;
@@ -1369,20 +1371,20 @@ nav .navigation-inner {
     order: -1;
   }
 
-  #about-section h3::before {
+  .about-section h3::before {
     top: 48px;
   }
 
-  #about-section {
+  .about-section {
     height: auto;
   }
 }
 
 @media (max-width: 1075px) {
 
-  #hero-section,
-  #about-section,
-  #featured-projects {
+  .hero-section,
+  .about-section,
+  .featured-projects {
     padding-left: 0px;
   }
 
@@ -1401,7 +1403,7 @@ nav .navigation-inner {
   #sidebar::before,
   .navigation-socials,
   .navigation-socials::before,
-  .hero-pagination,
+  #pagination,
   .hero-location,
   .hero-title h4 {
     display: none;
@@ -1431,7 +1433,7 @@ nav .navigation-inner {
   align-items: start;
   }
 
-  #featured-projects .slider-text h3::before {
+  .featured-projects .slider-text h3::before {
   top: 30px;
   }
 
@@ -1521,4 +1523,8 @@ nav .navigation-inner {
     height: 400px;
     width: 300px;
   }
+}
+
+#fullpage .hero-section .fp-overflow{
+ overflow: initial;
 }
