@@ -1,6 +1,7 @@
 /* Global Variables */
 
 var menuButton = $(".navigation-menu-btn"),
+  mobileMenuButton = $(".mobile-navigation-menu-btn"),
   navigationContainer = $("#navigation-container"),
   navigationOverlay = $("#navigation-overlay");
 
@@ -403,6 +404,7 @@ function showMenu() {
         easing: "easeInOutExpo"
     });
     menuButton.addClass("closed-menu");
+    mobileMenuButton.addClass("closed-menu");
     setTimeout(function () {
         $(".navigation-title span").shuffleLetters({});
     }, 300);
@@ -418,11 +420,18 @@ function hideMenu() {
     easing: "easeInOutExpo"
   });
   menuButton.removeClass("closed-menu");
+  mobileMenuButton.removeClass("closed-menu");
   navigationOverlay.fadeOut(500);
 }
 
 menuButton.on("click", function () {
   if (!menuButton.hasClass("closed-menu")) showMenu();
+  else hideMenu();
+  return false;
+});
+
+mobileMenuButton.on("click", function () {
+  if (!mobileMenuButton.hasClass("closed-menu")) showMenu();
   else hideMenu();
   return false;
 });

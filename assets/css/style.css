@@ -477,7 +477,8 @@ ul {
   opacity: 0.6;
 }
 
-#logo-container {
+.logo-container,
+.mobile-logo-container {
   width: 80px;
   height: 80px;
   display: flex;
@@ -489,7 +490,15 @@ ul {
   position: relative;
 }
 
-.logo {
+.mobile-logo-container {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.logo,
+.mobile-logo {
   transition: all 0.35s ease;
   height: 40px;
   width: 30px;
@@ -626,14 +635,16 @@ ul {
   }
 }
 
-#logo-container:hover .logo {
+.logo-container:hover .logo,
+.mobile-logo-container:hover .mobile-logo {
   background: #FF7F7F;
   transition: all 0.35s ease;
   -webkit-clip-path: polygon(10% 100%, 50% 20%, 73% 65%, 58% 65%, 50% 50%, 25% 100%, 75% 100%, 65% 80%, 80% 80%, 90% 100%);
   clip-path: polygon(10% 100%, 50% 20%, 73% 65%, 58% 65%, 50% 50%, 25% 100%, 75% 100%, 65% 80%, 80% 80%, 90% 100%);
 }
 
-.navigation-menu-btn {
+.navigation-menu-btn,
+.mobile-navigation-menu-btn {
   width: 28px;
   height: 50px;
   display: flex;
@@ -644,7 +655,20 @@ ul {
   padding: 25px 25px 0 25px;
 }
 
-.navigation-menu-btn span {
+.mobile-navigation-menu-btn {
+  display: none;
+  z-index: 101;
+}
+
+.mobile-navigation-menu-btn,
+.mobile-logo-container {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: fadeInTop;
+}
+
+.navigation-menu-btn span,
+.mobile-navigation-menu-btn span {
   width: 100%;
   margin-bottom: 6px;
   height: 2px;
@@ -655,16 +679,20 @@ ul {
   background: #FF7F7F;
 }
 
-.navigation-menu-btn .second-bar {
+.navigation-menu-btn .second-bar,
+.mobile-navigation-menu-btn .second-bar {
   width: 70%;
 }
 
 .navigation-menu-btn .third-bar,
-.navigation-menu-btn.closed-menu:hover .third-bar {
+.navigation-menu-btn.closed-menu:hover .third-bar,
+.mobile-navigation-menu-btn .third-bar,
+.mobile-navigation-menu-btn.closed-menu:hover .third-bar {
   width: 0;
 }
 
-.navigation-menu-btn.closed-menu .first-bar {
+.navigation-menu-btn.closed-menu .first-bar,
+.mobile-navigation-menu-btn.closed-menu .first-bar {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
@@ -674,7 +702,8 @@ ul {
   top: 8.5px;
 }
 
-.navigation-menu-btn.closed-menu .second-bar {
+.navigation-menu-btn.closed-menu .second-bar,
+.mobile-navigation-menu-btn.closed-menu .second-bar {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -o-transform: rotate(45deg);
@@ -698,12 +727,15 @@ ul {
   transition: all 0.4s ease-in-out;
 }
 
-.navigation-menu-btn:hover .menu-btn-text {
+.navigation-menu-btn:hover .menu-btn-text,
+.mobile-navigation-menu-btn:hover .menu-btn-text {
   color: #fff;
 }
 
 .navigation-menu-btn:hover .second-bar,
-.navigation-menu-btn:hover .third-bar {
+.navigation-menu-btn:hover .third-bar,
+.mobile-navigation-menu-btn:hover .second-bar,
+.mobile-navigation-menu-btn:hover .third-bar {
   width: 100%;
 }
 
@@ -1393,12 +1425,21 @@ nav .navigation-inner {
   }
 
   #sidebar::before,
+  #sidebar,
   .navigation-socials,
   .navigation-socials::before,
   #pagination,
   .hero-location,
-  .hero-title h4 {
+  .hero-title h4,
+  .logo-container {
     display: none;
+  }
+
+  .mobile-navigation-menu-btn {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 
   #sidebar {
@@ -1413,6 +1454,10 @@ nav .navigation-inner {
     animation-duration: 1s;
     animation-fill-mode: both;
     animation-name: fadeInTop;
+  }
+
+  .mobile-logo-container {
+    display: flex;
   }
 }
 
