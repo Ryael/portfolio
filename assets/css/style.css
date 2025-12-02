@@ -9,7 +9,8 @@
 /* 07. Featured Projects */
 /*  07.1 Slider */
 /* 08. About */
-/* 09. Media Queries */
+/* 09. Contact */
+/* 10. Media Queries */
 
 /* 01. Fonts */
 
@@ -761,7 +762,8 @@ ul {
   margin-bottom: 16px;
 }
 
-.navigation-socials li a {
+.navigation-socials li a,
+.contact-socials li a {
   display: inline-block;
   width: 36px;
   height: 36px;
@@ -773,11 +775,13 @@ ul {
   transition: all 0.4s ease-in-out;
 }
 
-.navigation-socials li:last-child {
+.navigation-socials li:last-child,
+.contact-scoails li :last-child {
   margin-bottom: 0;
 }
 
-.navigation-socials li a:hover {
+.navigation-socials li a:hover,
+.contact-socials li a:hover {
   border-radius: 100%;
   color: #fff;
   transition: all 0.4s ease-in-out;
@@ -1267,7 +1271,8 @@ nav .navigation-inner {
 
 /* 08. About */
 
-.about-section {
+.about-section,
+.contact-section {
   width: 100%;
   height: 100vh;
   position: relative;
@@ -1278,7 +1283,8 @@ nav .navigation-inner {
 }
 
 .about-section h3,
-.slider-title h3 {
+.slider-title h3,
+.contact-section h3 {
   color: #fff;
   font-family: 'Poppins', sans-serif;
   font-size: clamp(1.25rem, 0.65rem + 3.45vw, 2.5rem); /* font-size: 40px */
@@ -1287,22 +1293,15 @@ nav .navigation-inner {
   position: relative;
 }
 
-.about-section p {
-  color: #fff;
+.about-section p,
+.contact-section p {
   padding-top: 10px;
-  text-align: left;
-  font-size: 11px;
-  text-transform: uppercase;
-  font-weight: 400;
-  letter-spacing: 3px;
-  line-height: 22px;
-  position: relative;
-  z-index: 2;
   max-width: 515px;
 }
 
 .about-section h3::before,
-.featured-projects h3::before {
+.featured-projects h3::before,
+.contact-section h3::before {
   background: #FF7F7F;
   content: '';
   position: absolute;
@@ -1334,7 +1333,8 @@ nav .navigation-inner {
 }
 
 .about-section .two-column-grid p,
-.slider-title p {
+.slider-title p,
+.contact-section p {
   color: #fff;
   text-align: left;
   font-size: 15px;
@@ -1387,7 +1387,44 @@ nav .navigation-inner {
   padding: 0;
 }
 
-/* 09. Media Queries */
+/* 09. Contact */
+
+.contact-socials {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.contact-socials li a {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  color: rgba(255, 255, 255, 0.41);
+  font-size: 20px;
+}
+
+.contact-section p {
+  position: relative;
+}
+
+.contact-section p a {
+  color: #FFF;
+  font-weight: 600;
+}
+
+.contact-section p a::after {
+  background: #FF7F7F;
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 25%;
+  width: 123px;
+  height: 1.3px;
+  left: 0%;
+}
+
+/* 10. Media Queries */
 
 @media (max-width: 1294px) {
   .two-column-grid {
@@ -1408,7 +1445,8 @@ nav .navigation-inner {
 
   .hero-section,
   .about-section,
-  .featured-projects {
+  .featured-projects,
+  .contact-section {
     padding-left: 0px;
   }
 
