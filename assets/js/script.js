@@ -625,7 +625,9 @@ emblaApi
   .on('destroy', removeDotBtnsAndClickHandlers)
 
 new fullpage('#fullpage', {
+  anchors: ["home", "about", "portfolio", "contact"],
   autoScrolling: true,
+  responsiveWidth: 1000,
   navigation: false, // disable default bullets.
   credits: {
     enabled: false,
@@ -636,7 +638,7 @@ new fullpage('#fullpage', {
 
   onLeave: function(origin, destination) {
     updateNav(destination.index);
-  }
+  },
 
 });
 
