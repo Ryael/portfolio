@@ -624,34 +624,56 @@ emblaApi
   .on('destroy', removePrevNextBtnsClickHandlers)
   .on('destroy', removeDotBtnsAndClickHandlers)
 
-new fullpage('#fullpage', {
-  anchors: ["home", "about", "portfolio", "contact"],
-  autoScrolling: true,
-  responsiveWidth: 1000,
-  navigation: false, // disable default bullets.
-  credits: {
-    enabled: false,
-  },
+document.addEventListener('DOMContentLoaded', () => {
+  const indicator = document.getElementById('next-indicator');
+  const text = indicator.querySelector('span');
+  const line = indicator.querySelector('.line');
+  const names = ["Home", "About", "Portfolio", "Contact"];
 
-    // Get your license at https://alvarotrigo.com/fullPage/pricing.
-  licenseKey: "CNX97-NSKS7-5I9F7-23P18-FKXNN",
+  const getNextIndex = i => i + 1 < names.length ? i + 1 : null;
 
-  onLeave: function(origin, destination) {
-    updateNav(destination.index);
-  },
+  const animate = i => {
+    if (i === null) return;
+    text.textContent = names[i];
+    anime({
+      targets: [line, text],
+      translateY: [{ value: 0, duration: 250 }, { value: 10, duration: 300 }],
+      easing: 'easeOutQuad'
+    });
+  };
 
-});
+  const fp = new fullpage('#fullpage', {
+    anchors: names.map(n => n.toLowerCase()),
+    autoScrolling: true,
+    navigation: false,
+    credits: { enabled: false },
+    licenseKey: "CNX97-NSKS7-5I9F7-23P18-FKXNN",
 
-// Highlight active item.
-function updateNav(activeIndex) {
-  document.querySelectorAll('#pagination .pagination-wrapper').forEach((el, i) => {
-    el.classList.toggle('active', i === activeIndex);
+    onLeave: (_, destination) => {
+      const next = getNextIndex(destination.index);
+      indicator.style.display = next === null ? 'none' : 'flex';
+      animate(next);
+      updateNav(destination.index);
+    },
+
+    afterLoad: (_, destination) => {
+      const next = getNextIndex(destination.index);
+      indicator.style.display = next === null ? 'none' : 'flex';
+      if (next !== null) text.textContent = names[next];
+    }
   });
-}
 
-// Click → scroll to section.
-document.querySelectorAll('#pagination .pagination-wrapper').forEach(el => {
-  el.addEventListener('click', () => {
-    fullpage_api.moveTo(parseInt(el.dataset.index) + 1);
-  });
+  const updateNav = i => document.querySelectorAll('#pagination .pagination-wrapper')
+    .forEach((el, idx) => el.classList.toggle('active', idx === i));
+
+  document.querySelectorAll('#pagination .pagination-wrapper')
+    .forEach(el => el.addEventListener('click', () => fullpage_api.moveTo(+el.dataset.index + 1)));
+
+  // Initial setup
+  const initialNext = getNextIndex(0);
+  if (initialNext !== null) {
+    text.textContent = names[initialNext];
+    line.style.transform = text.style.transform = 'translateY(10px)';
+    indicator.style.display = 'flex';
+  }
 });

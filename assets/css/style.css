@@ -414,7 +414,8 @@ ul {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  z-index: 10;
+  z-index: 9999;
+  pointer-events: auto; /* Ensure clicks register */
 }
 
 #next-indicator {
