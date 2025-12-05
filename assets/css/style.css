@@ -402,6 +402,44 @@ ul {
  width: 100%;
 }
 
+#next-indicator-container {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 10;
+}
+
+#next-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  cursor: pointer;
+  will-change: transform;
+}
+
+#next-indicator .line {
+  width: 2px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.51);
+  margin-top: 5px;
+}
+
+#next-indicator span {
+  color: #fff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 /* 05. Buttons */
 
 .btn {
