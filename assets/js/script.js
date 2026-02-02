@@ -632,6 +632,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const getNextIndex = i => i + 1 < names.length ? i + 1 : null;
 
+  // Click to navigate
+  indicator.addEventListener('click', () => {
+    fullpage_api.moveSectionDown();
+  });
+
   const animate = i => {
     if (i === null) return;
     text.textContent = names[i];
