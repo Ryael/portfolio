@@ -632,7 +632,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const getNextIndex = i => i + 1 < names.length ? i + 1 : null;
 
-  // Click to navigate
+  // Click to navigate.
   indicator.addEventListener('click', () => {
     fullpage_api.moveSectionDown();
   });
@@ -674,7 +674,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('#pagination .pagination-wrapper')
     .forEach(el => el.addEventListener('click', () => fullpage_api.moveTo(+el.dataset.index + 1)));
 
-  // Initial setup
+  // Initial setup.
   const initialNext = getNextIndex(0);
   if (initialNext !== null) {
     text.textContent = names[initialNext];
