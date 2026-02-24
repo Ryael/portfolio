@@ -87,18 +87,39 @@ var menuButton = $(".navigation-menu-btn"),
 
     ,
     init: function() {
-        // Begin the loop with first current string (global self.strings)
+        // Begin the loop with first current string (global self.strings),
         // current string will be passed as an argument each time after this.
         var self = this;
         self.timeout = setTimeout(function() {
-            for (var i=0;i<self.strings.length;++i) self.sequence[i]=i;
+            for (var i = 0; i < self.strings.length; ++i) self.sequence[i] = i;
 
             // Shuffle the array if true.
-            if(self.shuffle) self.sequence = self.shuffleArray(self.sequence);
+            if (self.shuffle) self.sequence = self.shuffleArray(self.sequence);
 
-            // Start typing.
-            self.typewrite(self.strings[self.sequence[self.arrayPos]], self.strPos);
-        }, self.startDelay);
+            var firstString = self.strings[self.sequence[self.arrayPos]];
+
+            // Logic for the first page load.
+        if (self.isFirstRun === undefined) {
+            // Start at the end of the text, but before the "^".
+            var pauseIdx = firstString.indexOf("^");
+            self.strPos = pauseIdx > -1 ? pauseIdx : firstString.length;
+
+            // Mark that we need to clean the string after this run
+            self.isFirstRun = true;
+        } else {
+            self.strPos = 0;
+            // If it's the second time seeing the first string, clean it.
+            if (self.isFirstRun === true) {
+                var pauseIdx = firstString.indexOf("^");
+                if (pauseIdx > -1) {
+                    self.strings[self.sequence[self.arrayPos]] = firstString.substring(0, pauseIdx);
+                }
+                self.isFirstRun = false;
+            }
+        }
+
+        self.typewrite(self.strings[self.sequence[self.arrayPos]], self.strPos);
+      }, self.startDelay);
     }
 
     ,
@@ -381,9 +402,9 @@ $("document").ready(function() {
 
 function handleTyping () {
   $(".element").typed({
-    strings: ["Software Developer.", "cat lover.", "Website Designer."],
+    strings: ["Software Developer.^2000", "cat lover.", "Website Designer."],
     typeSpeed: 50,
-    starDelay: 200,
+    startDelay: 0,
     backDelay: 1200,
     loop: true,
     showCursor: true,
