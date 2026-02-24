@@ -2,6 +2,7 @@
 
 var menuButton = $(".navigation-menu-btn"),
   mobileMenuButton = $(".mobile-navigation-menu-btn"),
+  menuLink = $(".menu-link"),
   navigationContainer = $("#navigation-container"),
   navigationOverlay = $("#navigation-overlay");
 
@@ -460,6 +461,10 @@ mobileMenuButton.on("click", function () {
 navigationOverlay.on("click", function () {
   hideMenu();
   return false;
+});
+
+menuLink.on("click", function () {
+  hideMenu();
 });
 
 var tooltips = document.querySelectorAll('#navigation-overlay .tooltip');
