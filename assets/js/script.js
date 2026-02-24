@@ -427,6 +427,8 @@ function showMenu() {
     });
     menuButton.addClass("closed-menu");
     mobileMenuButton.addClass("closed-menu");
+    fullpage_api.setAllowScrolling(false);
+    fullpage_api.setKeyboardScrolling(false);
     setTimeout(function () {
         $(".navigation-title span").shuffleLetters({});
     }, 300);
@@ -443,6 +445,8 @@ function hideMenu() {
   });
   menuButton.removeClass("closed-menu");
   mobileMenuButton.removeClass("closed-menu");
+  fullpage_api.setAllowScrolling(true);
+  fullpage_api.setKeyboardScrolling(true);
   navigationOverlay.fadeOut(500);
 }
 
@@ -672,6 +676,8 @@ document.addEventListener('DOMContentLoaded', () => {
       easing: 'easeOutQuad'
     });
   };
+
+/* Fullpage.js */
 
   const fp = new fullpage('#fullpage', {
     anchors: names.map(n => n.toLowerCase()),
