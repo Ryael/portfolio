@@ -690,6 +690,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navigation: false,
     credits: { enabled: false },
     responsiveWidth: 1075,
+    fixedElements: ".mobile-navigation-menu-btn",
     licenseKey: "CNX97-NSKS7-5I9F7-23P18-FKXNN",
 
     onLeave: (_, destination) => {

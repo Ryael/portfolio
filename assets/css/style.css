@@ -1519,7 +1519,7 @@ nav .navigation-inner {
 
   .mobile-navigation-menu-btn {
     display: flex;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
   }
@@ -1540,6 +1540,11 @@ nav .navigation-inner {
 
   .mobile-logo-container {
     display: flex;
+  }
+
+  .menu-link:hover::after,
+  .menu-link.active::after {
+    width: 80%;
   }
 }
 
