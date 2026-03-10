@@ -1201,6 +1201,13 @@ nav .navigation-inner {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.embla__button:hover {
+  color: #FFF;
+  background: rgba(255, 255, 255, 0.037);
+  transition: all 0.3s ease-in-out;
 }
 
 .embla__button:disabled {
@@ -1253,6 +1260,12 @@ nav .navigation-inner {
   border: 1px solid transparent;
   margin: 15px;
   transition: all 0.2s ease-in-out;
+}
+
+.embla__dot:hover:after {
+  background: #FFF;
+  transform: scale(1.5);
+  transition: all 0.3s ease;
 }
 
 .embla__dot--selected:after {
