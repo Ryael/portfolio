@@ -689,7 +689,7 @@ document.addEventListener('DOMContentLoaded', () => {
     autoScrolling: true,
     navigation: false,
     credits: { enabled: false },
-    responsiveWidth: 800,
+    responsiveWidth: 1075,
     licenseKey: "CNX97-NSKS7-5I9F7-23P18-FKXNN",
 
     onLeave: (_, destination) => {

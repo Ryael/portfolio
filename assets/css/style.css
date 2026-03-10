@@ -953,7 +953,7 @@ ul {
 }
 
 .menu-link:hover::after,
-.menu-link.active {
+.menu-link.active:after {
   width: 100%;
 }
 
@@ -1512,7 +1512,8 @@ nav .navigation-inner {
   #pagination,
   .hero-location,
   .hero-title h4,
-  .logo-container {
+  .logo-container,
+  #next-indicator-container {
     display: none;
   }
 
