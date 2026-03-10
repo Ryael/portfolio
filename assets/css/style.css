@@ -396,6 +396,7 @@ ul {
   width: 100%;
   opacity: 1;
   background: #FF7F7F;
+  transition: .2s ease-in-out;
 }
 
 .pagination-wrapper:hover .stepper-item {

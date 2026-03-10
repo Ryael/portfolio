@@ -3,6 +3,7 @@
 var menuButton = $(".navigation-menu-btn"),
   mobileMenuButton = $(".mobile-navigation-menu-btn"),
   menuLink = $(".menu-link"),
+  paginationLink = $(".pagination-wrapper"),
   navigationContainer = $("#navigation-container"),
   navigationOverlay = $("#navigation-overlay");
 
@@ -468,6 +469,10 @@ navigationOverlay.on("click", function () {
 });
 
 menuLink.on("click", function () {
+  hideMenu();
+});
+
+paginationLink.on("click", function () {
   hideMenu();
 });
 
