@@ -689,12 +689,14 @@ document.addEventListener('DOMContentLoaded', () => {
     autoScrolling: true,
     navigation: false,
     credits: { enabled: false },
+    responsiveWidth: 800,
     licenseKey: "CNX97-NSKS7-5I9F7-23P18-FKXNN",
 
     onLeave: (_, destination) => {
       const next = getNextIndex(destination.index);
       indicator.style.display = next === null ? 'none' : 'flex';
       animate(next);
+      updatePagination(destination.index);
       updateNav(destination.index);
     },
 
@@ -705,10 +707,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  const updateNav = i => document.querySelectorAll('#pagination .pagination-wrapper')
+  const updatePagination = i => document.querySelectorAll('#pagination .pagination-wrapper')
     .forEach((el, idx) => el.classList.toggle('active', idx === i));
 
   document.querySelectorAll('#pagination .pagination-wrapper')
+    .forEach(el => el.addEventListener('click', () => fullpage_api.moveTo(+el.dataset.index + 1)));
+
+  const updateNav = i => document.querySelectorAll('#menu-panel .menu-link')
+    .forEach((el, idx) => el.classList.toggle('active', idx === i));
+
+  document.querySelectorAll('#menu-panel .menu-link')
     .forEach(el => el.addEventListener('click', () => fullpage_api.moveTo(+el.dataset.index + 1)));
 
   // Initial setup.

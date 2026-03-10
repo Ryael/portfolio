@@ -946,12 +946,14 @@ ul {
   background: rgba(255, 255, 255, 0.071);
 }
 
-.menu-link:hover {
+.menu-link:hover,
+.menu-link.active {
   color: #FF7F7F;
   transition: all 0.2s ease;
 }
 
-.menu-link:hover::after {
+.menu-link:hover::after,
+.menu-link.active {
   width: 100%;
 }
 
