@@ -1484,8 +1484,15 @@ nav .navigation-inner {
 
 @media (max-width: 1294px) {
   .two-column-grid {
-    grid-template-columns: 1fr;
     grid-gap: 35px;
+  }
+
+  .three-column-grid {
+    grid-gap: 17px;
+  }
+
+  .tech-stack-item:not(:last-child) {
+    margin-bottom: 17px;
   }
 
   .two-column-grid > .column:last-child {
@@ -1545,6 +1552,10 @@ nav .navigation-inner {
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(10px) saturate(50%);
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: fadeInTop;
+    margin-top: 14px;
   }
 
   .mobile-navigation-menu-btn {
@@ -1576,6 +1587,15 @@ nav .navigation-inner {
   .menu-link.active::after {
     width: 80%;
   }
+
+  .two-column-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .three-column-grid {
+    grid-gap: 0px;
+  }
+
 }
 
 @media (max-width: 730px) {
