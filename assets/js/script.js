@@ -92,6 +92,9 @@ var menuButton = $(".navigation-menu-btn"),
         // Begin the loop with first current string (global self.strings),
         // current string will be passed as an argument each time after this.
         var self = this;
+        // Safety: clear existing timeouts before starting a new one
+        if (self.timeout) clearTimeout(self.timeout);
+
         self.timeout = setTimeout(function() {
             for (var i = 0; i < self.strings.length; ++i) self.sequence[i] = i;
 
@@ -339,7 +342,7 @@ var menuButton = $(".navigation-menu-btn"),
       ,
       reset: function() {
           var self = this;
-          clearInterval(self.timeout);
+          if (self.timeout) clearTimeout(self.timeout);
           var id = this.el.attr('id');
           this.el.after('<span id="' + id + '"/>')
           this.el.remove();
@@ -428,10 +431,12 @@ function showMenu() {
     });
     menuButton.addClass("closed-menu");
     mobileMenuButton.addClass("closed-menu");
-    fullpage_api.setAllowScrolling(false);
-    fullpage_api.setKeyboardScrolling(false);
+    if (typeof fullpage_api !== 'undefined') {
+        fullpage_api.setAllowScrolling(false);
+        fullpage_api.setKeyboardScrolling(false);
+    }
     setTimeout(function () {
-        $(".navigation-title span").shuffleLetters({});
+        if ($.fn.shuffleLetters) $(".navigation-title span").shuffleLetters({});
     }, 300);
 }
 
@@ -446,33 +451,36 @@ function hideMenu() {
   });
   menuButton.removeClass("closed-menu");
   mobileMenuButton.removeClass("closed-menu");
-  fullpage_api.setAllowScrolling(true);
-  fullpage_api.setKeyboardScrolling(true);
+  if (typeof fullpage_api !== 'undefined') {
+    fullpage_api.setAllowScrolling(true);
+    fullpage_api.setKeyboardScrolling(true);
+  }
   navigationOverlay.fadeOut(500);
 }
 
-menuButton.on("click", function () {
+menuButton.on("click", function (e) {
+  e.preventDefault();
   if (!menuButton.hasClass("closed-menu")) showMenu();
   else hideMenu();
-  return false;
 });
 
-mobileMenuButton.on("click", function () {
+mobileMenuButton.on("click", function (e) {
+  e.preventDefault();
   if (!mobileMenuButton.hasClass("closed-menu")) showMenu();
   else hideMenu();
-  return false;
 });
 
-navigationOverlay.on("click", function () {
-  hideMenu();
-  return false;
-});
-
-menuLink.on("click", function () {
+navigationOverlay.on("click", function (e) {
+  e.preventDefault();
   hideMenu();
 });
 
-paginationLink.on("click", function () {
+menuLink.on("click", function (e) {
+  // Prevent ghost clicks that might trigger navigation twice
+  hideMenu();
+});
+
+paginationLink.on("click", function (e) {
   hideMenu();
 });
 
@@ -501,17 +509,17 @@ const addDotBtnsAndClickHandlers = (emblaApi, dotsNode) => {
       emblaApi.scrollTo(index)
     }
 
-    dotNodes = Array.from(dotsNode.querySelectorAll('.embla__dot'))
+    dotNodes = Array.from(dotsNode.querySelectorAll('.embla__dot'));
     dotNodes.forEach((dotNode, index) => {
       dotNode.addEventListener('click', () => scrollTo(index), false)
-    })
+    });
   }
 
   const toggleDotBtnsActive = () => {
     const previous = emblaApi.previousScrollSnap()
     const selected = emblaApi.selectedScrollSnap()
-    dotNodes[previous].classList.remove('embla__dot--selected')
-    dotNodes[selected].classList.add('embla__dot--selected')
+    if (dotNodes[previous]) dotNodes[previous].classList.remove('embla__dot--selected')
+    if (dotNodes[selected]) dotNodes[selected].classList.add('embla__dot--selected')
   }
 
   emblaApi
@@ -611,7 +619,9 @@ const tweenOpacity = (emblaApi, eventName) => {
 
       const tweenValue = 1 - Math.abs(diffToTarget * tweenFactor)
       const opacity = numberWithinRange(tweenValue, 0, 1).toString()
-      emblaApi.slideNodes()[slideIndex].style.opacity = opacity
+      if (emblaApi.slideNodes()[slideIndex]) {
+        emblaApi.slideNodes()[slideIndex].style.opacity = opacity
+      }
     })
   })
 }
@@ -633,98 +643,126 @@ const setupTweenOpacity = (emblaApi) => {
   }
 }
 
-const OPTIONS = { loop: true }
+const OPTIONS = { loop: true };
 
-const emblaNode = document.querySelector('.embla')
-const viewportNode = emblaNode.querySelector('.embla__viewport')
-const prevBtn = emblaNode.querySelector('.embla__button--prev')
-const nextBtn = emblaNode.querySelector('.embla__button--next')
-const dotsNode = document.querySelector('.embla__dots')
-
-const emblaApi = EmblaCarousel(viewportNode, OPTIONS)
-const removeTweenOpacity = setupTweenOpacity(emblaApi)
-
-const removePrevNextBtnsClickHandlers = addPrevNextBtnsClickHandlers(
-  emblaApi,
-  prevBtn,
-  nextBtn
-)
-const removeDotBtnsAndClickHandlers = addDotBtnsAndClickHandlers(
-  emblaApi,
-  dotsNode
-)
-
-emblaApi
-  .on('destroy', removeTweenOpacity)
-  .on('destroy', removePrevNextBtnsClickHandlers)
-  .on('destroy', removeDotBtnsAndClickHandlers)
+/* Initialization Logic */
 
 document.addEventListener('DOMContentLoaded', () => {
+  const emblaNode = document.querySelector('.embla')
+  if (emblaNode && typeof EmblaCarousel !== 'undefined') {
+    const viewportNode = emblaNode.querySelector('.embla__viewport')
+    const prevBtn = emblaNode.querySelector('.embla__button--prev')
+    const nextBtn = emblaNode.querySelector('.embla__button--next')
+    const dotsNode = document.querySelector('.embla__dots')
+
+    const emblaApi = EmblaCarousel(viewportNode, OPTIONS)
+    const removeTweenOpacity = setupTweenOpacity(emblaApi)
+
+    const removePrevNextBtnsClickHandlers = addPrevNextBtnsClickHandlers(
+      emblaApi,
+      prevBtn,
+      nextBtn
+    )
+    const removeDotBtnsAndClickHandlers = addDotBtnsAndClickHandlers(
+      emblaApi,
+      dotsNode
+    )
+
+    emblaApi
+      .on('destroy', removeTweenOpacity)
+      .on('destroy', removePrevNextBtnsClickHandlers)
+      .on('destroy', removeDotBtnsAndClickHandlers)
+  }
+
   const indicator = document.getElementById('next-indicator');
-  const text = indicator.querySelector('span');
-  const line = indicator.querySelector('.line');
-  const names = ["Home", "About", "Portfolio", "Contact"];
+  if (indicator) {
+    const text = indicator.querySelector('span');
+    const line = indicator.querySelector('.line');
+    const names = ["Home", "About", "Portfolio", "Contact"];
 
-  const getNextIndex = i => i + 1 < names.length ? i + 1 : null;
+    const getNextIndex = i => i + 1 < names.length ? i + 1 : null;
 
-  // Click to navigate.
-  indicator.addEventListener('click', () => {
-    fullpage_api.moveSectionDown();
-  });
-
-  const animate = i => {
-    if (i === null) return;
-    text.textContent = names[i];
-    anime({
-      targets: [line, text],
-      translateY: [{ value: 0, duration: 250 }, { value: 10, duration: 300 }],
-      easing: 'easeOutQuad'
+    // Click to navigate.
+    indicator.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (typeof fullpage_api !== 'undefined') fullpage_api.moveSectionDown();
     });
-  };
+
+    const animate = i => {
+      if (i === null || !text || !line) return;
+      text.textContent = names[i];
+      if (typeof anime !== 'undefined') {
+        anime({
+          targets: [line, text],
+          translateY: [{ value: 0, duration: 250 }, { value: 10, duration: 300 }],
+          easing: 'easeOutQuad'
+        });
+      }
+    };
 
 /* Fullpage.js */
 
-  const fp = new fullpage('#fullpage', {
-    anchors: names.map(n => n.toLowerCase()),
-    autoScrolling: true,
-    navigation: false,
-    credits: { enabled: false },
-    responsiveWidth: 1075,
-    fixedElements: ".mobile-navigation-menu-btn",
-    licenseKey: "CNX97-NSKS7-5I9F7-23P18-FKXNN",
+    if (typeof fullpage !== 'undefined' && document.querySelector('#fullpage')) {
+      new fullpage('#fullpage', {
+        anchors: names.map(n => n.toLowerCase()),
+        autoScrolling: true,
+        navigation: false,
+        credits: { enabled: false },
+        responsiveWidth: 1075,
+        fixedElements: ".mobile-navigation-menu-btn",
+        licenseKey: "CNX97-NSKS7-5I9F7-23P18-FKXNN",
 
-    onLeave: (_, destination) => {
-      const next = getNextIndex(destination.index);
-      indicator.style.display = next === null ? 'none' : 'flex';
-      animate(next);
-      updatePagination(destination.index);
-      updateNav(destination.index);
-    },
+        // Critical: Ensure fullpage.js doesn't reload the page on hash change
+        animateAnchor: false,
+        recordHistory: false,
 
-    afterLoad: (_, destination) => {
-      const next = getNextIndex(destination.index);
-      indicator.style.display = next === null ? 'none' : 'flex';
-      if (next !== null) text.textContent = names[next];
+        onLeave: (_, destination) => {
+          const next = getNextIndex(destination.index);
+          indicator.style.display = next === null ? 'none' : 'flex';
+          animate(next);
+          updatePagination(destination.index);
+          updateNav(destination.index);
+        },
+
+        afterLoad: (_, destination) => {
+          const next = getNextIndex(destination.index);
+          indicator.style.display = next === null ? 'none' : 'flex';
+          if (next !== null && text) text.textContent = names[next];
+          updatePagination(destination.index);
+          updateNav(destination.index);
+        }
+      });
     }
-  });
 
-  const updatePagination = i => document.querySelectorAll('#pagination .pagination-wrapper')
-    .forEach((el, idx) => el.classList.toggle('active', idx === i));
+    function updatePagination(i) {
+        document.querySelectorAll('#pagination .pagination-wrapper')
+            .forEach((el, idx) => el.classList.toggle('active', idx === i));
+    }
 
-  document.querySelectorAll('#pagination .pagination-wrapper')
-    .forEach(el => el.addEventListener('click', () => fullpage_api.moveTo(+el.dataset.index + 1)));
+    document.querySelectorAll('#pagination .pagination-wrapper')
+      .forEach(el => el.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (typeof fullpage_api !== 'undefined') fullpage_api.moveTo(+el.dataset.index + 1);
+      }));
 
-  const updateNav = i => document.querySelectorAll('#menu-panel .menu-link')
-    .forEach((el, idx) => el.classList.toggle('active', idx === i));
+    function updateNav(i) {
+        document.querySelectorAll('#menu-panel .menu-link')
+            .forEach((el, idx) => el.classList.toggle('active', idx === i));
+    }
 
-  document.querySelectorAll('#menu-panel .menu-link')
-    .forEach(el => el.addEventListener('click', () => fullpage_api.moveTo(+el.dataset.index + 1)));
+    document.querySelectorAll('#menu-panel .menu-link')
+      .forEach(el => el.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (typeof fullpage_api !== 'undefined') fullpage_api.moveTo(+el.dataset.index + 1);
+      }));
 
-  // Initial setup.
-  const initialNext = getNextIndex(0);
-  if (initialNext !== null) {
-    text.textContent = names[initialNext];
-    line.style.transform = text.style.transform = 'translateY(10px)';
-    indicator.style.display = 'flex';
+    // Initial setup.
+    const initialNext = getNextIndex(0);
+    if (initialNext !== null && text && line) {
+      text.textContent = names[initialNext];
+      line.style.transform = 'translateY(10px)';
+      text.style.transform = 'translateY(10px)';
+      indicator.style.display = 'flex';
+    }
   }
 });
