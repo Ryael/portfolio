@@ -184,7 +184,8 @@ ul {
 /* 04. Hero */
 
 .hero-section {
-  display: grid;
+  display: flex;
+  justify-content: center;
   place-items: center;
   width: 100%;
   height: 100vh;
