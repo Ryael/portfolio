@@ -401,7 +401,7 @@ var menuButton = $(".navigation-menu-btn"),
 
 }(window.jQuery);
 
-$("document").ready(function() {
+$(window).on('load', function() {
   handleTyping();
 });
 
